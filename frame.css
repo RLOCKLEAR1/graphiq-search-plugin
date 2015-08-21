@@ -1,0 +1,107 @@
+/**
+ * Common/Reset styles for all modes
+ */
+.wsm-bg {
+	display: none;
+}
+.wsm-frame {
+	background: #eee;
+}
+.wsm-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.wsm-content iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.wsm-wrap.shown {
+	opacity: 1 !important;
+}
+.wsm-close {
+	position: absolute;
+	top: 9px;
+	right: 20px;
+	padding: 3px;
+	text-align: center;
+	font-weight: bold;
+	color: #999;
+	font-size: 30px;
+	line-height: 1;
+	cursor: pointer;
+}
+.wsm-close:hover {
+	color: #aaa;
+}
+.wsm-close:active {
+	color: #bbb;
+}
+
+
+/**
+ * Modal Mode
+ */
+.wsm-wrap[data-mode="modal"] {
+	position: fixed;
+	min-height: 360px;
+	z-index: 9999999;
+	display: none;
+	opacity: 0;
+	transition: 0.4s opacity;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.wsm-wrap[data-mode="modal"] .wsm-bg {
+	display: block;
+	position: absolute;
+	background: #000;
+	opacity: 0.7;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.wsm-wrap[data-mode="modal"] .wsm-frame {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+	z-index: 2;
+	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+	        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+/**
+ * Sidebar Mode
+ */
+.wsm-wrap[data-mode="sidebar"] {
+	position: fixed;
+	min-height: 360px;
+	z-index: 9999999;
+	display: none;
+	opacity: 0;
+	transition: 0.4s opacity;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 300px;
+	-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+			box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wsm-wrap[data-mode="sidebar"] .wsm-frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
