@@ -16,7 +16,7 @@ gulp.task('build', function() {
 	// Unminified
 	gulp.src('plugin.js')
 		.pipe(webpack(extend(true, {}, webpackConfig, {
-			output: { filename: 'bundle.pretty.js' }
+			output: { filename: 'bundle.js' }
 		})))
 		.pipe(gulp.dest('dist/'));
 });

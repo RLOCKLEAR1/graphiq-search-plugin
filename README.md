@@ -24,30 +24,30 @@ Grab the Graphiq Search Plugin API by adding a single JavaScript file to your pa
 <script src="//cdn1.findthebest.com/rx/cms-plugin.js"></script>
 ```
 
-This file should be included wherever you wish to provide recommendations, generally this is the Add/Edit Post page in a traditional CMS.
+This file should be included wherever you wish to provide access to Graphiq Search, generally this is the Add/Edit Post page in a traditional CMS.
 
 **Note** We recommend loading the plugin from our CDN to get the latest changes and bug fixes, but feel free to host the plugin yourself if you wish–we'll notify you of new major versions and important bug fix releases.
 
 ##Using The Plugin
 
-Now that the Plugin API has been added to the page, you're ready to start getting recommendations. To demonstrate how this works, we'll provide a simple example.
+Now that the Plugin API has been added to the page, we'll provide a simple example to demonstrate how it works.
 
-Below is an example of a CMS where we've integrated a button to get recommendations.
+Below is an example of a CMS where we've integrated a button to launch Graphiq Search.
 
 ![](https://dl.dropboxusercontent.com/u/10112297/ss/ScreenShot2015-01-07at9.13.28PM.png)
 
-Your team has complete flexibility on when and how recommendations are launched within your CMS–we suggest adding a button like the one pictured above as a simple solution.
+Your team has complete flexibility on when and how Graphiq Search is launched within your CMS–we suggest adding a button like the one pictured above as a simple solution.
 
-From there, clicking the button will pass the contents of the post to our plugin, so we can do the heavy lifting and begin recommending content based on your post
+From there, clicking the button will pass the contents of the post to our plugin, so we can do the heavy lifting and begin returning visualizations based on your post
 
 ![screen shot 2015-04-30 at 6 39 15 pm](https://cloud.githubusercontent.com/assets/875591/7425594/5e0d45f2-ef68-11e4-9687-f57e73953296.png)
 
-When a piece of content is selected, our plugin will pass an embed code back to you, which can then be inserted into your post
+When a visualizations is selected, our plugin will pass an embed code back to you, which can then be inserted into your post
 
 The code below demonstrates the minimum amount of code required to achieve integration of the plugin as shown above. We suggest looking through some of the more detailed examples later in this document to see detailed examples of how to integrate with popular CMS editors and a full list of plugin options.
 
 ```js
-var recommender = new FTB.Recommender({
+var graphiqSearch = new GraphiqSearch({
     // Place your API key here
     key: 'YOUR_API_KEY',
 
@@ -58,28 +58,28 @@ var recommender = new FTB.Recommender({
 });
 
 // When content has been selected, insert it into the post
-recommender.on('select', function(result) {
+graphiqSearch.on('select', function(result) {
     editor.insert(result.code);
 });
 
-// Show the recommender when the plugin button is clicked
+// Show the Graphiq Search interface when the plugin button is clicked
 $('#your-button').click(function(){
-  recommender.show();
+  graphiqSearch.show();
 });
 ```
 
 ##CKEditor Integration
 
-The Graphiq Search Plugin makes it easy to integrate with CKEditor, which is a popular web text editor used in many content management systems. Attaching a CKEditor to a Recommender instance automatically inserts a button to launch the recommendation interface, and also handles inserting content back into your post when something is selected.
+The Graphiq Search Plugin makes it easy to integrate with CKEditor, which is a popular web text editor used in many content management systems. Attaching a CKEditor to a Graphiq Search instance automatically inserts a button to launch the search interface, and also handles inserting content back into your post when something is selected.
 
 ```js
 CKEDITOR.replace('myEditor', {
-  extraPlugins: 'ftb-plugin',
+  extraPlugins: 'graphiq-search-plugin',
   allowedContent: true
 });
 
-var recommender = new FTB.Recommender({ ... });
-recommender.attachEditor(CKEDITOR.instances.myEditor);
+var graphiqSearch = new GraphiqSearch({ ... });
+graphiqSearch.attachEditor(CKEDITOR.instances.myEditor);
 ```
 
 
@@ -88,10 +88,10 @@ recommender.attachEditor(CKEDITOR.instances.myEditor);
 ####Constructor
 
 ```js
-new FTB.Recommender(options:object)
+new GraphiqSearch(options:object)
 ```
 
-Creates a new recommender instance using the specified options (see below for a full list of supported options).
+Creates a new search instance using the specified options (see below for a full list of supported options).
 
 ####Options
 
@@ -105,10 +105,10 @@ Creates a new recommender instance using the specified options (see below for a 
 | *title*     | `function`       | A callback function that returns the **title** of the post as a `string`.                                                                                                  |
 | *tags*      | `function`       | A callback function that returns any **tags** associated with the post as an `array` of `strings`.                                                                         |
 | *mode*      | `string`         | The interface mode that the plugin will use–either `modal`, `sidebar`, or `container`. By default this is set to `modal`.                                                  |
-| *container* | `HTMLElement`    | If `mode` is set to `'container'`, this is the DOM element that the recommendation interface will be rendered into                                                           |
+| *container* | `HTMLElement`    | If `mode` is set to `'container'`, this is the DOM element that the search interface will be rendered into                                                           |
 | *color* | `string`    | Customize the theme of your visuals by passing a hexadecimal color here (ex: `#3498db`) |
 | *embedType* | `string`    | Graphiq offers two types of embed codes–an `<iframe>`-based code and a `<script>`-based code. We provide the iframe version by default, but some people prefer to use a script for compatibility and responsive reasons. Pass `'iframe'` or `'script'` here to choose which type of embed code you prefer.|
-| *locale* | `string` | The preferred language to use for our recommendation interface (ex: 'en_US'). Note: Not every language is available.|
+| *locale* | `string` | The preferred language to use for our search interface (ex: 'en_US'). Note: Not every language is available.|
 
 Each of the options above has a corresponding `get` and `set` method
 
@@ -116,20 +116,20 @@ Each of the options above has a corresponding `get` and `set` method
 
 | method                                          | description                                                                                                                                                                                                                                                           |
 |-------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `show()`                                        | Shows the recommendation interface                                                                                                                                                                                                                                    |
-| `hide()`                                        | Hides the recommendation interface                                                                                                                                                                                                                                    |
-| `search([ query:string])`                                      | Manually trigger a new search. If an existing recommendation interface is open, results will be shown there, otherwise a new one will be created. By default this will pull the query from the `text` callback, but you can also pass an optional string `query` to trigger a specific search query.                                                                                                                     |
+| `show()`                                        | Shows the Graphiq Search interface                                                                                                                                                                                                                                    |
+| `hide()`                                        | Hides the Graphiq Search interface                                                                                                                                                                                                                                    |
+| `search([ query:string])`                                      | Manually trigger a new search. If an existing search interface is open, results will be shown there, otherwise a new one will be created. By default this will pull the query from the `text` callback, but you can also pass an optional string `query` to trigger a specific search query.                                                                                                                     |
 | `on(event:string, callback:function)`           | Adds an event listener for the specified event. See below for a list of all events                                                                                                                                                                                    |
-| `off([event:string], [callback:function])`      | Removes event listeners from the recommender. If no event is specified, all callbacks are removed. If an event name is specified, but no callback, all callbacks for that event are removed. If an event and callback are specified, that single callback is removed. |
-| `setText(callback:function)`                    | Sets the text callback that should return the post contents to use for recommendations                                                                                                                                                                                |
+| `off([event:string], [callback:function])`      | Removes event listeners from the search instance. If no event is specified, all callbacks are removed. If an event name is specified, but no callback, all callbacks for that event are removed. If an event and callback are specified, that single callback is removed. |
+| `setText(callback:function)`                    | Sets the text callback that should return the post contents to use for searches                                                                                                                                                                                |
 | `getText()`                                     | Returns the current text callback                                                                                                                                                                                                                                     |
-| `setTitle(callback:function)`                   | Sets the title callback that should return the post title to use for recommendations                                                                                                                                                                                  |
+| `setTitle(callback:function)`                   | Sets the title callback that should return the post title to use for searches                                                                                                                                                                                  |
 | `getTitle()`                                    | Returns the current title callback                                                                                                                                                                                                                                    |
-| `setTags(callback:function)`                    | Sets the text callback that should return an array of tags to use for recommendations                                                                                                                                                                                 |
+| `setTags(callback:function)`                    | Sets the text callback that should return an array of tags to use for searches                                                                                                                                                                                 |
 | `getTags()`                                     | Returns the current tags callback                                                                                                                                                                                                                                     |
 | `setMode(mode:string, [container:HTMLElement])` | Sets the interface mode (see `mode` in the options table above for a list of all types). If the `mode` is container, you can also pass the containing DOM element as the second parameter for convenience.                                                            |
 | `getMode()`                                     | Get the interface mode                                                                                                                                                                                                                                                |
-| `setContainer(container:HTMLEelement)`          | If `mode` is container, this method allows you to specify the element that the recommendations will be rendered into                                                                                                                                                  |
+| `setContainer(container:HTMLEelement)`          | If `mode` is container, this method allows you to specify the element that the search results will be rendered into                                                                                                                                                  |
 | `getContainer()`                                | Return the current containing element, or `null` if one is not set                                                                                                                                                                                                    |
 | `setUserID(name:string)`                        | Set the unique identifier for the current CMS user                                                                                                                                                                                                                |
 | `getUserID()`                                   | Return the unique identifier for the current CMS user                                                                                                                                                                                                                                 |
@@ -141,7 +141,7 @@ Each of the options above has a corresponding `get` and `set` method
 | `getColor()`                                   | Get the current theme color                                                                                                                                                                                                                                 |
 | `setEmbedType(type:string)`                        | Set the preferred embed code type (`script` or `iframe`)                                                                                                                                                                                                                                          |
 | `getEmbedType()`                                   | Get the preferred embed code type                                                                                                                                                                                                                                 |
-| `attachEditor(editor:CKEDITOR.editor)`          | Integrates the recommender plugin into the specified CKEditor instance, which adds a button to launch the recommender and automatically sets up content insertion handlers                                                       |
+| `attachEditor(editor:CKEDITOR.editor)`          | Integrates the graphiq search plugin into the specified CKEditor instance, which adds a button to launch Graphiq Search and automatically sets up content insertion handlers                                                       |
 
 ####Events
 
@@ -149,10 +149,10 @@ For use with the `on()` and `off()` methods listed above
 
 | event    | description                                                         |
 |----------|---------------------------------------------------------------------|
-| `select` | A piece of content was selected inside the recommendation interface |
-| `load`   | The recommendation interface was loaded successfully                |
-| `show`   | The recommendation interface was shown                              |
-| `hide`   | The recommendation interface was hidden                             |
+| `select` | A piece of content was selected inside the search interface |
+| `load`   | The search interface was loaded successfully                |
+| `show`   | The search interface was shown                              |
+| `hide`   | The search interface was hidden                             |
 
 ####Embed Response Format
 
@@ -176,8 +176,8 @@ A couple constant values are available on the plugin
 
 | constant                | icon                                                                                           |
 |-------------------------|------------------------------------------------------------------------------------------------|
-| FTB.Recommender.ICON    | A protocol-relative URL containing the path to a Graphiq icon that you can use in your CMS |
-| FTB.Recommender.VERSION | The current version of the Recommender plugin                                                  |
+| GraphiqSearch.ICON      | A URL containing the path to a Graphiq icon that you can use in your CMS |
+| GraphiqSearch.VERSION   | The current version of the Graphiq Search plugin                                                  |
 
 ## Frequently Asked Questions
 
@@ -213,5 +213,3 @@ Our widgets are fully responsive–meaning that they will respond to the size of
 ## Questions
 
 If you have any other questions or suggestions, please reach out by email **dschnurr@graphiq.com**
-
-

@@ -6,7 +6,7 @@ var frame = require('./frame');
 var msg = require('postmessage');
 var noop = function(){};
 
-var Recommender = Class({
+var GraphiqSearch = Class({
 
 	///////////////////////////////////////
 	// PUBLIC INTERFACE ///////////////////
@@ -26,8 +26,11 @@ var Recommender = Class({
 			}
 		}
 
+		// Support passing in an explicit host (for debugging)
+		this.host = options.host || Constants.HOST;
+
 		// Listen for messages from the iframe
-		msg.receiveMessage(receiveMessage.bind(this), Constants.HOST);
+		msg.receiveMessage(receiveMessage.bind(this), this.host);
 	},
 
 	show: function() {
@@ -42,7 +45,7 @@ var Recommender = Class({
 
 	showModal: function() {
 		var self = this;
-		var src = Constants.HOST+'/widgets/plugin';
+		var src = this.host + '/widgets/plugin';
 
 		var params = this.buildQueryString({
 			key:               this.key,
@@ -234,7 +237,7 @@ var Recommender = Class({
 	},
 
 	attachEditor: function(editor) {
-		editor.__recommender = this;
+		editor.__graphiq_search = this;
 		this.setText(function(){
 			return editor.getData();
 		});
@@ -262,7 +265,7 @@ var Recommender = Class({
 ///////////////////////////////////////
 
 // Events: on/off/emit/etc.
-extend(Recommender.prototype, EventEmitter.prototype);
+extend(GraphiqSearch.prototype, EventEmitter.prototype);
 
 
 ///////////////////////////////////////
@@ -284,7 +287,7 @@ function postMessage(method, payload) {
 		method: method,
 		payload: payload
 	};
-	msg.postMessage(message, Constants.HOST, this.iframe.contentWindow);
+	msg.postMessage(message, this.host, this.iframe.contentWindow);
 }
 
 function receiveMessage(event) {
@@ -322,8 +325,8 @@ function postOptions() {
 // PUBLIC CONSTANTS ///////////////////
 ///////////////////////////////////////
 
-Recommender.VERSION = Constants.VERSION;
-Recommender.ICON = Constants.ICON;
+GraphiqSearch.VERSION = Constants.VERSION;
+GraphiqSearch.ICON = Constants.ICON;
 
 
-module.exports = Recommender;
+module.exports = GraphiqSearch;

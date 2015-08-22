@@ -4,25 +4,25 @@
  * Adds a jquery plugin that allows you to quickly create
  * an widget search instance inside a container element
  */
-var Recommender = require('./Recommender');
+var GraphiqSearch = require('./GraphiqSearch');
 
 var jQueryGlobal = window.jQuery;
-if (jQueryGlobal && !jQueryGlobal.fn.recommender) {
-	jQueryGlobal.fn.recommender = function(options) {
+if (jQueryGlobal && !jQueryGlobal.fn.graphiqSearch) {
+	jQueryGlobal.fn.graphiqSearch = function(options) {
 
 		// Check if an widget search instance already exists for this element
-		var recommender = this.data('__recommender');
+		var graphiqSearch = this.data('__graphiq_search');
 		
-		if (!recommender) {
-			// Create a new recommender instance contained in this element
+		if (!graphiqSearch) {
+			// Create a new search instance contained in this element
 			options = jQueryGlobal.extend(options, {
 				mode: 'container',
 				container: this
 			});
-			recommender = new Recommender(options);
-			this.data('__recommender', recommender);
+			graphiqSearch = new GraphiqSearch(options);
+			this.data('__graphiq_search', graphiqSearch);
 		} else {
-			recommender.search();
+			graphiqSearch.search();
 		}
 
 		return this;
