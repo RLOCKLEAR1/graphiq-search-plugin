@@ -21,7 +21,7 @@ To get an API Key, please [get in touch with us](https://www.graphiq.com/plugins
 Grab the Graphiq Search Plugin API by adding a single JavaScript file to your page
 
 ```html
-<script src="//cdn1.findthebest.com/rx/cms-plugin.js"></script>
+<script src="//cdn1.graphiq.com/rx/plugin/1/bundle.js"></script>
 ```
 
 This file should be included wherever you wish to provide access to Graphiq Search, generally this is the Add/Edit Post page in a traditional CMS.
@@ -197,12 +197,12 @@ Curious what these embed codes look like? Here are some examples:
 
 *Script*
 ```html
-<a class="ftb-widget" href="http://listings.findthecompany.com/l/7647344/Wal-Mart-Stores-Inc-in-Bentonville-AR#stock%20info&s=1sLeQ7" data-width="600" data-height="400" data-widget-id="csB5Z2q3kMJ"  target="_blank"  style="font:14px/16px arial;color:#3d3d3d;">Wal-Mart Stores, Inc. - Stock Price and Volume | FindTheCompany</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^https:/.test(d.location)?'https':'http';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://cdn1.findthebest.com/rx/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","ftb-widgetjs");</script>
+<a class="ftb-widget" href="http://listings.findthecompany.com/l/7647344/Wal-Mart-Stores-Inc-in-Bentonville-AR#stock%20info&s=1sLeQ7" data-width="600" data-height="400" data-widget-id="csB5Z2q3kMJ"  target="_blank"  style="font:14px/16px arial;color:#3d3d3d;">Wal-Mart Stores, Inc. - Stock Price and Volume | FindTheCompany</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^https:/.test(d.location)?'https':'http';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://cdn1.graphiq.com/rx/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","ftb-widgetjs");</script>
 ```
 
 *IFrame*
 ```html
-<div style="width:100%;max-width:600px;margin:0 auto;"><iframe src="//www.findthebest.com/w/9IgjhMMx35H" width="600" height="400" frameborder="0" scrolling="no" style="position:static;vertical-align:top;margin:0;max-width:100%;min-height:400px;"></iframe><div style="text-align:center;"><a target="_blank" href="http://listings.findthecompany.com/l/7647344/Wal-Mart-Stores-Inc-in-Bentonville-AR#stock%20info&s=1sLeQ7" style="font:14px/16px arial;color:#3d3d3d;">Wal-Mart Stores, Inc. - Stock Price and Volume | FindTheCompany</a></div></div>
+<div style="width:100%;max-width:600px;margin:0 auto;"><iframe src="//w.graphiq.com/w/9IgjhMMx35H" width="600" height="400" frameborder="0" scrolling="no" style="position:static;vertical-align:top;margin:0;max-width:100%;min-height:400px;"></iframe><div style="text-align:center;"><a target="_blank" href="http://listings.findthecompany.com/l/7647344/Wal-Mart-Stores-Inc-in-Bentonville-AR#stock%20info&s=1sLeQ7" style="font:14px/16px arial;color:#3d3d3d;">Wal-Mart Stores, Inc. - Stock Price and Volume | FindTheCompany</a></div></div>
 ```
 
 **"How does the embedded content look on mobile devices?"**
