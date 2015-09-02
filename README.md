@@ -21,7 +21,7 @@ To get an API Key, please [get in touch with us](https://www.graphiq.com/plugins
 Grab the Graphiq Search Plugin API by adding a single JavaScript file to your page
 
 ```html
-<script src="//cdn1.graphiq.com/rx/plugin/1/bundle.js"></script>
+<script src="https://cdn1.graphiq.com/rx/plugin/1/bundle.js"></script>
 ```
 
 This file should be included wherever you wish to provide access to Graphiq Search, generally this is the Add/Edit Post page in a traditional CMS.
