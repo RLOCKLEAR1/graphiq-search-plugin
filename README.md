@@ -107,7 +107,7 @@ Creates a new search instance using the specified options (see below for a full 
 | *mode*      | `string`         | The interface mode that the plugin will use–either `modal`, `sidebar`, or `container`. By default this is set to `modal`.                                                  |
 | *container* | `HTMLElement`    | If `mode` is set to `'container'`, this is the DOM element that the search interface will be rendered into                                                           |
 | *color* | `string`    | Customize the theme of your visuals by passing a hexadecimal color here (ex: `#3498db`) |
-| *embedType* | `string`    | Graphiq offers two types of embed codes–an `<iframe>`-based code and a `<script>`-based code. We provide the iframe version by default, but some people prefer to use a script for compatibility and responsive reasons. Pass `'iframe'` or `'script'` here to choose which type of embed code you prefer.|
+| *embedType* | `string`    | Graphiq offers two types of embed codes–an `<iframe>`-based code and a `<script>`-based code. We provide the script version by default, but some people prefer to use a script for compatibility and responsive reasons. Pass `'iframe'` or `'script'` here to choose which type of embed code you prefer.|
 | *locale* | `string` | The preferred language to use for our search interface (ex: 'en_US'). Note: Not every language is available.|
 
 Each of the options above has a corresponding `get` and `set` method
