@@ -34,13 +34,13 @@ Now that the Plugin API has been added to the page, we'll provide a simple examp
 
 Below is an example of a CMS where we've integrated a button to launch Graphiq Search.
 
-![](https://dl.dropboxusercontent.com/u/10112297/ss/ScreenShot2015-01-07at9.13.28PM.png)
+![](https://cloud.githubusercontent.com/assets/875591/9648116/65517642-5199-11e5-89c9-ee7291cdc373.png)
 
 Your team has complete flexibility on when and how Graphiq Search is launched within your CMS–we suggest adding a button like the one pictured above as a simple solution.
 
 From there, clicking the button will pass the contents of the post to our plugin, so we can do the heavy lifting and begin returning visualizations based on your post
 
-![screen shot 2015-04-30 at 6 39 15 pm](https://cloud.githubusercontent.com/assets/875591/7425594/5e0d45f2-ef68-11e4-9687-f57e73953296.png)
+![](https://cloud.githubusercontent.com/assets/875591/9648124/7d4ff3cc-5199-11e5-9ac4-4a041992b3dd.png)
 
 When a visualizations is selected, our plugin will pass an embed code back to you, which can then be inserted into your post
 
@@ -207,7 +207,7 @@ Curious what these embed codes look like? Here are some examples:
 
 **"How does the embedded content look on mobile devices?"**
 
-Our widgets are fully responsive–meaning that they will respond to the size of whatever device they are shown on. As mentioned in the answer to the question above, we recommend using the script-based embed code so that the height can be adjusted dynamically in addition to the width (script-based embed codes may not work with every CMS, so please test).
+Our visualizations are fully responsive–meaning that they will respond to the size of whatever device they are shown on. As mentioned in the answer to the question above, we recommend using the script-based embed code so that the height can be adjusted dynamically in addition to the width (script-based embed codes may not work with every CMS, so please test).
 
 
 ## Questions
