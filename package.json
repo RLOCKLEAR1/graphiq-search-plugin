@@ -1,6 +1,6 @@
 {
   "name": "graphiq-search-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plugin for obtaining visualizations from Graphiq Search",
   "main": "src/plugin.js",
   "author": "Graphiq Inc.",
