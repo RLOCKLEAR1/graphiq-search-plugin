@@ -8,13 +8,13 @@ gulp.task('default', ['build']);
 
 gulp.task('build', function() {
 	// Minified
-	gulp.src('plugin.js')
+	gulp.src('./src/plugin.js')
 		.pipe(webpack(webpackConfig))
 		.pipe(uglify())
 		.pipe(gulp.dest('dist/'));
 
 	// Unminified
-	gulp.src('plugin.js')
+	gulp.src('./src/plugin.js')
 		.pipe(webpack(extend(true, {}, webpackConfig, {
 			output: { filename: 'bundle.js' }
 		})))

@@ -2,7 +2,7 @@
   "name": "graphiq-search-plugin",
   "version": "1.0.0",
   "description": "Plugin for obtaining visualizations from Graphiq Search",
-  "main": "plugin.js",
+  "main": "src/plugin.js",
   "author": "Graphiq Inc.",
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
 
-	entry: ['./plugin.js'],
+	entry: ['./src/plugin.js'],
 
 	module: {
 		loaders: [

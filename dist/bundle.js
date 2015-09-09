@@ -72,7 +72,7 @@
 	var Constants = __webpack_require__(5);
 	var EventEmitter = __webpack_require__(6).EventEmitter;
 	var extend = __webpack_require__(7);
-	var frame = __webpack_require__(8);
+	var modal = __webpack_require__(8);
 	var msg = __webpack_require__(15);
 	var noop = function(){};
 
@@ -127,17 +127,17 @@
 				src += '?' + params;
 			}
 
-			if (!this.frame) {
-				this.frame = frame('<iframe id="wsp-iframe" src="'+src+'" frameborder="0"></iframe>', this.getMode());
+			if (!this.modal) {
+				this.modal = modal('<iframe id="wsp-iframe" src="'+src+'" frameborder="0"></iframe>', this.getMode());
 				this.iframe = document.querySelector('#wsp-iframe');
-				this.frame.on('hide', function(){
+				this.modal.on('hide', function(){
 					self.afterHide();
 				});
-				this.frame.on('show', function(){
+				this.modal.on('show', function(){
 					self.afterShow();
 				});
 			} else {
-				this.frame.show();
+				this.modal.show();
 			}
 
 			this.afterShow();
@@ -152,7 +152,7 @@
 		},
 
 		hide: function() {
-			this.frame.hide();
+			this.modal.hide();
 			this.afterHide();
 			return this;
 		},
@@ -239,8 +239,8 @@
 			} else {
 				this.mode = Constants.MODE_MODAL;
 			}
-			if (this.frame) {
-				this.frame.setMode(this.mode);
+			if (this.modal) {
+				this.modal.setMode(this.mode);
 			}
 			return this;
 		},
@@ -528,8 +528,8 @@
 
 	module.exports = {
 		HOST: 'https://www.graphiq.com',
-		ICON: 'https://img1.findthebest.com/sites/default/files/4261/media/images/_6326290.png',
-		VERSION: '1.0.0',
+		ICON: 'https://img1.graphiq.com/sites/default/files/4261/media/images/_6326290.png',
+		VERSION: '1.0.1',
 		MODE_MODAL: 'modal',
 		MODE_SIDEBAR: 'sidebar',
 		MODE_CONTAINER: 'container'
@@ -1004,6 +1004,7 @@
 		return self;
 	};
 
+
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
@@ -1043,8 +1044,8 @@
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
-		module.hot.accept("!!/Users/dschnurr/Desktop/graphiq-search-plugin/node_modules/css-loader/index.js!/Users/dschnurr/Desktop/graphiq-search-plugin/frame.css", function() {
-			var newContent = require("!!/Users/dschnurr/Desktop/graphiq-search-plugin/node_modules/css-loader/index.js!/Users/dschnurr/Desktop/graphiq-search-plugin/frame.css");
+		module.hot.accept("!!/Users/dschnurr/Desktop/graphiq-search-plugin/node_modules/css-loader/index.js!/Users/dschnurr/Desktop/graphiq-search-plugin/src/modal/modal.css", function() {
+			var newContent = require("!!/Users/dschnurr/Desktop/graphiq-search-plugin/node_modules/css-loader/index.js!/Users/dschnurr/Desktop/graphiq-search-plugin/src/modal/modal.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

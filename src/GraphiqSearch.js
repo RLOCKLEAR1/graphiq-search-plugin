@@ -2,7 +2,7 @@ var Class = require('class.js');
 var Constants = require('./Constants');
 var EventEmitter = require('events').EventEmitter;
 var extend = require('extend');
-var frame = require('./frame');
+var modal = require('./modal/modal');
 var msg = require('postmessage');
 var noop = function(){};
 
@@ -57,17 +57,17 @@ var GraphiqSearch = Class({
 			src += '?' + params;
 		}
 
-		if (!this.frame) {
-			this.frame = frame('<iframe id="wsp-iframe" src="'+src+'" frameborder="0"></iframe>', this.getMode());
+		if (!this.modal) {
+			this.modal = modal('<iframe id="wsp-iframe" src="'+src+'" frameborder="0"></iframe>', this.getMode());
 			this.iframe = document.querySelector('#wsp-iframe');
-			this.frame.on('hide', function(){
+			this.modal.on('hide', function(){
 				self.afterHide();
 			});
-			this.frame.on('show', function(){
+			this.modal.on('show', function(){
 				self.afterShow();
 			});
 		} else {
-			this.frame.show();
+			this.modal.show();
 		}
 
 		this.afterShow();
@@ -82,7 +82,7 @@ var GraphiqSearch = Class({
 	},
 
 	hide: function() {
-		this.frame.hide();
+		this.modal.hide();
 		this.afterHide();
 		return this;
 	},
@@ -169,8 +169,8 @@ var GraphiqSearch = Class({
 		} else {
 			this.mode = Constants.MODE_MODAL;
 		}
-		if (this.frame) {
-			this.frame.setMode(this.mode);
+		if (this.modal) {
+			this.modal.setMode(this.mode);
 		}
 		return this;
 	},

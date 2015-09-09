@@ -1,6 +1,6 @@
-var dom = require('./utils/dom');
-var tpl = require('./frame.html');
-var Constants = require('./Constants');
+var dom = require('../utils/dom');
+var tpl = require('./modal.html');
+var Constants = require('../Constants');
 var EventEmitter = require('events').EventEmitter;
 var extend = require('extend');
 
@@ -8,7 +8,7 @@ module.exports = function(content, mode) {
 	var self = {};
 
 	// Require CSS lazily since it inserts styles into head
-	require('./frame.css');
+	require('./modal.css');
 
 	// Append modal to DOM
 	var tempDiv = document.createElement('div');
