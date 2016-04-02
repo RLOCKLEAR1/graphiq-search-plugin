@@ -51,7 +51,9 @@ var GraphiqSearch = Class({
 			key:               this.key,
 			locale:            this.locale,
 			client_user_id:    this.userID,
-			client_user_email: this.userEmail
+			client_user_email: this.userEmail,
+			client:            this.client,
+			client_version:    this.clientVersion
 		});
 		if (params) {
 			src += '?' + params;
@@ -230,10 +232,29 @@ var GraphiqSearch = Class({
 
 	setLocale: function(locale) {
 		this.locale = locale;
+		return this;
 	},
 
 	getLocale: function() {
 		return this.locale;
+	},
+
+	setClient: function(client) {
+		this.client = client;
+		return this;
+	},
+
+	getClient: function() {
+		return this.client;
+	},
+
+	setClientVersion: function(clientVersion) {
+		this.clientVersion = clientVersion;
+		return this;
+	},
+
+	getClientVersion: function() {
+		return this.clientVersion;
 	},
 
 	attachEditor: function(editor) {
