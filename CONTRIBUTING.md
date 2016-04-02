@@ -4,7 +4,6 @@
 
 Install global gulp and webpack packages if necessary
 ```
-npm install -g webpack
 npm install -g gulp
 ```
 
