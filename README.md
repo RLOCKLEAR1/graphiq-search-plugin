@@ -156,13 +156,19 @@ For use with the `on()` and `off()` methods listed above
 
 ####Embed Response Format
 
-When a piece of content is selected, an object will be passed to your `select` callback with the embed code and a few other pieces of information. In most cases you'll only need the `code` property, but the other properties may be of use in rare cases.
+When a piece of content is selected, an object will be passed to your `select` callback with the a few pieces of information.
 
 | property    | description                                                         |
 |-------------|---------------------------------------------------------------------|
-| `code`      | Embed code that should be inserted into your post |
+| `type`      | The type of the content that was selectied–either "visualization" or "story" |
 | `id`        | Unique identifier for this content |
 | `title`     | A title that describes the content being embedded |
+| `code`      | Embed code that should be inserted into your post |
+
+If the content `type` is `visualization`, we send a few more pieces of metadata listed below. In most cases you'll only need the `code` property, but these other properties may come in handy.
+
+| property    | description                                                         |
+|-------------|---------------------------------------------------------------------|
 | `width`     | The default pixel width (everything is responsive so this may change based on device width) |
 | `height`    | The default pixel height |
 | `url`       | Raw URL for interactive content (Can be used for [oEmbed](http://www.oembed.com/) integrations) |
