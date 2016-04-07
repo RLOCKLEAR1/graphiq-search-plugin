@@ -220,7 +220,7 @@ var GraphiqSearch = Class({
 	},
 
 	setEmbedType: function(type) {
-		if (type === 'script' || type === 'iframe') {
+		if (type === 'script' || type === 'iframe' || type === 'wordpress' || type === 'url') {
 			this.embedType = type;
 		}
 		return this;
