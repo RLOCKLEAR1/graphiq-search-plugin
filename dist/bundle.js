@@ -104,7 +104,11 @@
 		},
 
 		show: function() {
-			this.showModal();
+			if (this.shouldUseModal()) {
+				this.showModal();
+			} else {
+				this.showContainer();
+			}
 
 			// For now, show will automatically trigger a search
 			// In a future version, we may want to require search() to be called explicitly
@@ -113,8 +117,7 @@
 			return this;
 		},
 
-		showModal: function() {
-			var self = this;
+		getIframeHtml: function() {
 			var src = this.host + '/widgets/plugin';
 
 			var params = this.buildQueryString({
@@ -128,9 +131,18 @@
 			if (params) {
 				src += '?' + params;
 			}
+			return '<iframe id="wsp-iframe" src="'+src+'" frameborder="0" style="width:100%;height:100%;min-height:300px;"></iframe>';
+		},
+
+		showModal: function() {
+			if (!this.shouldUseModal()) {
+				return this;
+			}
+
+			var self = this;
 
 			if (!this.modal) {
-				this.modal = modal('<iframe id="wsp-iframe" src="'+src+'" frameborder="0"></iframe>', this.getMode());
+				this.modal = modal(this.getIframeHtml(), this.getMode());
 				this.iframe = document.querySelector('#wsp-iframe');
 				this.modal.on('hide', function(){
 					self.afterHide();
@@ -147,6 +159,14 @@
 			return this;
 		},
 
+		showContainer: function() {
+			if (!this.iframe && this.container) {
+				this.container.innerHTML = this.getIframeHtml();
+				this.iframe = document.querySelector('#wsp-iframe');
+			}
+			this.afterShow();
+		},
+
 		afterShow: function() {
 			this.isShown = true;
 			this.emit('show');
@@ -154,7 +174,9 @@
 		},
 
 		hide: function() {
-			this.modal.hide();
+			if (this.modal) {
+				this.modal.hide();
+			}
 			this.afterHide();
 			return this;
 		},
@@ -325,6 +347,14 @@
 
 		getClientVersion: function() {
 			return this.clientVersion;
+		},
+
+		shouldUseContainer: function() {
+			return this.mode === Constants.MODE_CONTAINER && !!this.container;
+		},
+
+		shouldUseModal: function() {
+			return !this.shouldUseContainer();
 		},
 
 		attachEditor: function(editor) {
