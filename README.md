@@ -26,7 +26,7 @@ Grab the Graphiq Search Plugin API by adding a single JavaScript file to your pa
 
 This file should be included wherever you wish to provide access to Graphiq Search, generally this is the Add/Edit Post page in a traditional CMS.
 
-**Note** We recommend loading the plugin from our CDN to get the latest changes and bug fixes, but feel free to host the plugin yourself if you wish–we'll notify you of new major versions and important bug fix releases.
+**Note** We recommend loading the plugin from our CDN using the URL above in order to get the latest changes and bug fixes, but you can also download and host this file yourself if necessary–we'll try to notify you of new major versions and important bug fix releases.
 
 ##Using The Plugin
 
@@ -44,7 +44,7 @@ From there, clicking the button will pass the contents of the post to our plugin
 
 When a visualizations is selected, our plugin will pass an embed code back to you, which can then be inserted into your post
 
-The code below demonstrates the minimum amount of code required to achieve integration of the plugin as shown above. We suggest looking through some of the more detailed examples later in this document to see detailed examples of how to integrate with popular CMS editors and a full list of plugin options.
+The snippet below demonstrates the minimum amount of code required to achieve integration of the plugin as shown above. We suggest looking through some of the more detailed examples later in this document to see how the plugin can be integrated with popular CMS editors, as well as a full list of plugin options.
 
 ```js
 var graphiqSearch = new GraphiqSearch({
