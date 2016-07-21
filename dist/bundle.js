@@ -78,6 +78,11 @@
 
 	var GraphiqSearch = Class({
 
+		// UI options that will be passed into iframe
+		ui: {
+			useInsert: false
+		},
+
 		///////////////////////////////////////
 		// PUBLIC INTERFACE ///////////////////
 		///////////////////////////////////////
@@ -368,6 +373,14 @@
 			return this;
 		},
 
+		setUiOption: function(option, value) {
+			this.ui[option] = value;
+			// Pass through to instance if already initialized
+			if (this.iframe) {
+				postOptions.call(this);
+			}
+		},
+
 		buildQueryString: function(data) {
 			var ret = [];
 			for (var d in data) {
@@ -388,6 +401,15 @@
 	// Events: on/off/emit/etc.
 	extend(GraphiqSearch.prototype, EventEmitter.prototype);
 
+	// Override 'on' to automate certain functionality
+	GraphiqSearch.prototype._on = GraphiqSearch.prototype.on;
+	GraphiqSearch.prototype.on = function(name /*, callback, context */) {
+		if (name === 'select') {
+			this.setUiOption('useInsert', true);
+		}
+		this._on.apply(this, arguments);
+		return this;
+	};
 
 	///////////////////////////////////////
 	// PRIVATE INSTANCE METHODS ///////////
@@ -438,7 +460,8 @@
 		postMessage.call(this, 'options', {
 			key: this.key,
 			color: this.color,
-			embedType: this.embedType
+			embedType: this.embedType,
+			ui: this.ui
 		});
 	}
 
@@ -580,7 +603,7 @@
 	module.exports = {
 		HOST: 'https://www.graphiq.com',
 		ICON: 'https://img1.graphiq.com/sites/default/files/4261/media/images/_6326290.png',
-		VERSION: '1.0.2',
+		VERSION: '1.0.3',
 		MODE_MODAL: 'modal',
 		MODE_SIDEBAR: 'sidebar',
 		MODE_CONTAINER: 'container'
