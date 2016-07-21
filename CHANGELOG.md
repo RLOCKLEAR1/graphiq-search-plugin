@@ -1,3 +1,7 @@
+##v1.0.3
+
+- Use **Embed** button by default, unless a `select` handler was specified (then use **Insert**)
+
 ##v1.0.2
 
 - Fix the 'container' mode
