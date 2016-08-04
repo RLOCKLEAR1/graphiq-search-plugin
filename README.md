@@ -72,6 +72,8 @@ $('#your-button').click(function(){
 
 The Graphiq Search Plugin makes it easy to integrate with CKEditor, which is a popular web text editor used in many content management systems. Attaching a CKEditor to a Graphiq Search instance automatically inserts a button to launch the search interface, and also handles inserting content back into your post when something is selected.
 
+Once you've included the plugin script on your page as described in [Getting the Plugin](#getting-the-plugin), you can use code like the following to integrate into your CKEditor instance.
+
 ```js
 CKEDITOR.replace('myEditor', {
   extraPlugins: 'graphiq-search-plugin',
